@@ -12,7 +12,7 @@ namespace BFI
             Program m_objProgram = new Program();
 
             int m_intChoice = 0;
-            int m_intExit = 3;
+            int m_intExit = 4;
             string m_strCountry = "ID";
             Cities Cities = new Cities();
             Cities.PrepareCities(m_strCountry);
@@ -23,6 +23,7 @@ namespace BFI
                 Console.WriteLine("Please choose the number:");
                 Console.WriteLine("1. Find City");
                 Console.WriteLine("2. Text Generator");
+                Console.WriteLine("3. XYZ Number");
                 Console.WriteLine(m_intExit.ToString() + ". Exit");
                 string m_strChoice = Console.ReadLine();
 
@@ -36,6 +37,9 @@ namespace BFI
                         break;
                     case 2:
                         GenerateText();
+                        break;
+                    case 3:
+                        XYZNumber();
                         break;
                 }
                 Console.WriteLine("Press any key to continue");
@@ -72,6 +76,22 @@ namespace BFI
             Console.WriteLine("Text generated:");
             string m_strGeneratedText = m_objTextGenerator.RandomText(12);
             Console.WriteLine(m_strGeneratedText);
+            Console.WriteLine(string.Empty);
+        }
+
+        public static void XYZNumber()
+        {
+            Console.Clear();
+            Console.WriteLine("Input number (1 - 1000):");
+            string m_strNumber = Console.ReadLine();
+            int m_intNumber = 0;
+            if (!int.TryParse(m_strNumber, out m_intNumber))
+                Console.WriteLine("Input is not number");
+            else
+            {
+                XYZNumber m_objXYZNumber = new XYZNumber();
+                Console.WriteLine(m_objXYZNumber.GenerateXYZNumber(m_intNumber));
+            }
             Console.WriteLine(string.Empty);
         }
     }
